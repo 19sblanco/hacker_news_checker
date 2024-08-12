@@ -1,0 +1,2 @@
+you want to add some tests for index.js.sortHackerNewsArticles() and maybe some integration tests.
+    * check past convo for claude ai
