@@ -6,8 +6,10 @@ validate that EXACTLY the first 100 articles are sorted from
 newest to oldest @https://news.ycombinator.com/newest
 */
 async function sortHackerNewsArticles() {
+  let browser;
+  try {
   // launch browser
-  const browser = await chromium.launch({ headless: false });
+  browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -16,7 +18,6 @@ async function sortHackerNewsArticles() {
 
   // my code
   
-  try {
     // wait for page to load
     await page.waitForSelector(".morelink");
     await page.waitForLoadState("networkidle");
@@ -61,7 +62,10 @@ function isSortedDescending(arr) {
   }
   return true;
 }
-module.exports = { isSortedDescending };
+module.exports = { 
+  sortHackerNewsArticles,
+  isSortedDescending,
+};
 
 
 if (require.main === module) {
